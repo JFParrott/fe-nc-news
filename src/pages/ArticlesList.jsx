@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import ArticleCard from '../components/ArticleCard';
 import Loader from '../components/Loader';
 import { getArticles } from '../utils/api';
+import Voter from '../components/Voter';
 
 class ArticlesList extends React.Component {
   state = {
@@ -34,7 +35,13 @@ class ArticlesList extends React.Component {
           <Loader />
         ) : (
           articles.map((article) => {
-            return <ArticleCard article={article} key={article.article_id} />;
+            const { article_id, votes } = article;
+            return (
+              <div key={article_id}>
+                <ArticleCard article={article} key={article_id} />
+                <Voter article_id={article_id} votes={votes} />
+              </div>
+            );
           })
         )}
         <Link to="/submit-article">

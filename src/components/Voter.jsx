@@ -12,9 +12,9 @@ class Voter extends React.Component {
   }
 
   addVote = (e) => {
-    const { comment_id } = this.props;
+    const { comment_id, article_id } = this.props;
     const { value } = e.target;
-    if (this.props.comment_id) {
+    if (comment_id) {
       axios
         .patch(`https://nc-news-jp.herokuapp.com/api/comments/${comment_id}`, {
           inc_votes: parseInt(value),
@@ -23,6 +23,21 @@ class Voter extends React.Component {
           ({
             data: {
               updatedComment: { votes },
+            },
+          }) => {
+            this.setState({ votes, hasVoted: true });
+          }
+        );
+    }
+    if (article_id) {
+      axios
+        .patch(`https://nc-news-jp.herokuapp.com/api/articles/${article_id}`, {
+          inc_votes: parseInt(value),
+        })
+        .then(
+          ({
+            data: {
+              updatedArticle: { votes },
             },
           }) => {
             this.setState({ votes, hasVoted: true });
