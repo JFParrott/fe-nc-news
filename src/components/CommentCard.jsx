@@ -5,7 +5,7 @@ const CommentCard = (props) => {
   return (
     <div>
       <p>
-        {author} <br /> Posted: {created_at} <br /> Votes: {votes}
+        {author} <br /> Posted: {created_at}
       </p>
       <p>{body}</p>
     </div>

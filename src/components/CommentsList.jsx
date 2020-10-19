@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import CommentCard from './CommentCard';
 import Loader from './Loader';
+import Voter from './Voter';
 
 class CommentsList extends React.Component {
   state = {
@@ -34,6 +35,7 @@ class CommentsList extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     const { comments, isLoading } = this.state;
     return (
       <div>
@@ -41,7 +43,13 @@ class CommentsList extends React.Component {
           <Loader />
         ) : (
           comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} comment={comment} />;
+            const { comment_id, votes } = comment;
+            return (
+              <div key={comment_id}>
+                <CommentCard comment={comment} />
+                <Voter comment_id={comment_id} votes={votes} />
+              </div>
+            );
           })
         )}
       </div>
