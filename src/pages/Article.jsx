@@ -3,6 +3,7 @@ import axios from 'axios';
 import CommentPoster from '../components/CommentPoster';
 import CommentsList from '../components/CommentsList';
 import Loader from '../components/Loader';
+import Voter from '../components/Voter';
 
 class Article extends React.Component {
   state = {
@@ -50,9 +51,9 @@ class Article extends React.Component {
             <h2>{title}</h2>
             <p>
               Submitted by: {author} at {created_at} <br />
-              Votes: {votes}
             </p>
             <p>{body}</p>
+            <Voter article_id={article_id} votes={votes} />
             <CommentPoster
               article_id={article_id}
               addComment={this.addComment}
