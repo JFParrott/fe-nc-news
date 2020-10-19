@@ -20,6 +20,12 @@ class Article extends React.Component {
       });
   }
 
+  addComment = () => {
+    this.setState((prevState) => {
+      return { ...prevState, commentAdded: true };
+    });
+  };
+
   render() {
     const {
       article: {
@@ -32,6 +38,7 @@ class Article extends React.Component {
         votes,
       },
       isLoading,
+      commentAdded,
     } = this.state;
 
     return (
@@ -46,10 +53,15 @@ class Article extends React.Component {
               Votes: {votes}
             </p>
             <p>{body}</p>
-            <CommentPoster article_id={article_id} />
+            <CommentPoster
+              article_id={article_id}
+              addComment={this.addComment}
+            />
+            {commentAdded ? <p>Comment added!</p> : null}
             <CommentsList
               comment_count={comment_count}
               article_id={article_id}
+              commentAdded={commentAdded}
             />
           </>
         )}

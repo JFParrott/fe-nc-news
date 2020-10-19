@@ -12,10 +12,12 @@ class CommentPoster extends React.Component {
   };
 
   handleSubmit = (e) => {
-    const { article_id } = this.props;
+    const { article_id, addComment } = this.props;
     const { body } = this.state;
     e.preventDefault();
-    postComment(article_id, body).then(() => {});
+    postComment(article_id, body).then(() => {
+      addComment();
+    });
   };
 
   render() {

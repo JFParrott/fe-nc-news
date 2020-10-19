@@ -21,9 +21,8 @@ class CommentsList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { article_id } = this.props;
-    //change this conditional
-    if (this.state.commentAdded) {
+    const { article_id, commentAdded } = this.props;
+    if (prevProps.commentAdded !== commentAdded) {
       axios
         .get(
           `https://nc-news-jp.herokuapp.com/api/articles/${article_id}/comments`
