@@ -5,17 +5,20 @@ import Loader from '../components/Loader';
 import { getArticles } from '../utils/api';
 import Voter from '../components/Voter';
 import ErrorDisplayer from '../components/ErrorDisplayer';
+import Sorter from '../components/Sorter';
 
 class ArticlesList extends React.Component {
   state = {
     articles: [],
     isLoading: true,
     error: false,
+    sort_by: undefined,
   };
 
   componentDidMount() {
     const { slug } = this.props;
-    getArticles(slug)
+    const { sort_by } = this.state;
+    getArticles(slug, sort_by)
       .then(({ data: { articles } }) => {
         this.setState({ articles, isLoading: false });
       })
@@ -33,18 +36,24 @@ class ArticlesList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { slug } = this.props;
-    if (prevProps.slug !== slug) {
-      getArticles(slug).then(({ data: { articles } }) => {
+    const { sort_by } = this.state;
+    if (prevProps.slug !== slug || prevState.sort_by !== sort_by) {
+      getArticles(slug, sort_by).then(({ data: { articles } }) => {
         this.setState({ articles, isLoading: false });
       });
     }
   }
+
+  addSort = (value) => {
+    this.setState({ sort_by: value });
+  };
 
   render() {
     const { articles, isLoading, error } = this.state;
     if (error) return <ErrorDisplayer msg={error.msg} status={error.status} />;
     return (
       <div>
+        <Sorter addSort={this.addSort} />
         {isLoading ? (
           <Loader />
         ) : (

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const getArticles = (slug) => {
+export const getArticles = (slug, sort_by) => {
   return axios.get('https://nc-news-jp.herokuapp.com/api/articles', {
-    params: { topic: slug },
+    params: { topic: slug, sort_by },
   });
 };
 
