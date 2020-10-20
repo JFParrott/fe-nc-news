@@ -35,7 +35,6 @@ class CommentsList extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const { comments, isLoading } = this.state;
     return (
       <div>

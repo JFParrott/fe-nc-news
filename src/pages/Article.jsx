@@ -4,11 +4,13 @@ import CommentPoster from '../components/CommentPoster';
 import CommentsList from '../components/CommentsList';
 import Loader from '../components/Loader';
 import Voter from '../components/Voter';
+import ErrorDisplayer from '../components/ErrorDisplayer';
 
 class Article extends React.Component {
   state = {
     article: {},
     isLoading: true,
+    error: false,
     commentAdded: false,
   };
 
@@ -18,7 +20,17 @@ class Article extends React.Component {
       .get(`https://nc-news-jp.herokuapp.com/api/articles/${article_id}`)
       .then(({ data: { article } }) => {
         this.setState({ article, isLoading: false, commentAdded: false });
-      });
+      })
+      .catch(
+        ({
+          response: {
+            data: { msg },
+            status,
+          },
+        }) => {
+          this.setState({ error: { msg, status } });
+        }
+      );
   }
 
   addComment = () => {
@@ -40,8 +52,10 @@ class Article extends React.Component {
       },
       isLoading,
       commentAdded,
+      error,
     } = this.state;
 
+    if (error) return <ErrorDisplayer msg={error.msg} status={error.status} />;
     return (
       <div>
         {isLoading ? (

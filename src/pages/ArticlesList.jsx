@@ -4,18 +4,31 @@ import ArticleCard from '../components/ArticleCard';
 import Loader from '../components/Loader';
 import { getArticles } from '../utils/api';
 import Voter from '../components/Voter';
+import ErrorDisplayer from '../components/ErrorDisplayer';
 
 class ArticlesList extends React.Component {
   state = {
     articles: [],
     isLoading: true,
+    error: false,
   };
 
   componentDidMount() {
     const { slug } = this.props;
-    getArticles(slug).then(({ data: { articles } }) => {
-      this.setState({ articles, isLoading: false });
-    });
+    getArticles(slug)
+      .then(({ data: { articles } }) => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(
+        ({
+          response: {
+            data: { msg },
+            status,
+          },
+        }) => {
+          this.setState({ error: { msg, status } });
+        }
+      );
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -28,7 +41,8 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, error } = this.state;
+    if (error) return <ErrorDisplayer msg={error.msg} status={error.status} />;
     return (
       <div>
         {isLoading ? (

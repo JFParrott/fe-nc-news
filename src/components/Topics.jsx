@@ -21,7 +21,7 @@ class Topics extends React.Component {
       <div>
         {topics.map(({ slug, description }) => {
           return (
-            <Link to={`/${slug}`} key={slug}>
+            <Link to={`/topics/${slug}`} key={slug}>
               <button>{description}</button>
             </Link>
           );
