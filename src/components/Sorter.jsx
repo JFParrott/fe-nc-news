@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const SortContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 class Sorter extends React.Component {
   state = {
     sortValue: '',
@@ -14,8 +18,8 @@ class Sorter extends React.Component {
 
   render() {
     return (
-      <label htmlFor="sorter">
-        Sort by:
+      <SortContainer>
+        <label htmlFor="sorter">Sort by:</label>
         <select id="sorter" required onChange={this.handleChange}>
           <option value="">--Select a sort option--</option>
           <option value="created_at" onChange={this.handleChange}>
@@ -28,7 +32,7 @@ class Sorter extends React.Component {
             Votes
           </option>
         </select>
-      </label>
+      </SortContainer>
     );
   }
 }

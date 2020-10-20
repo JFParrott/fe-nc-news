@@ -7,7 +7,7 @@ const Button = styled.button`
   font-size: 2vh;
   height: 100%;
   background-color: #f2fcff;
-  margin: 2px 5px 2px 5px;
+  margin: 0px 5px 0px 5px;
   border: 1px;
   &:hover {
     text-decoration: underline;
