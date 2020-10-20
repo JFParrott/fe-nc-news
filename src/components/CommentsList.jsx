@@ -3,11 +3,13 @@ import CommentCard from './CommentCard';
 import Loader from './Loader';
 import Voter from './Voter';
 import { getArticleComments } from '../utils/api';
+import CommentDeleter from './CommentDeleter';
 
 class CommentsList extends React.Component {
   state = {
     comments: [],
     isLoading: true,
+    commentDeleted: false,
   };
 
   componentDidMount() {
@@ -19,12 +21,20 @@ class CommentsList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id, commentAdded } = this.props;
-    if (prevProps.commentAdded !== commentAdded) {
+    const { commentDeleted } = this.state;
+    if (
+      prevProps.commentAdded !== commentAdded ||
+      prevState.commentDeleted !== commentDeleted
+    ) {
       getArticleComments(article_id).then(({ data: { comments } }) => {
         this.setState({ comments, isLoading: false });
       });
     }
   }
+
+  deleteComment = () => {
+    this.setState({ commentDeleted: true });
+  };
 
   render() {
     const { comments, isLoading } = this.state;
@@ -39,6 +49,12 @@ class CommentsList extends React.Component {
               <div key={comment_id}>
                 <CommentCard comment={comment} />
                 <Voter comment_id={comment_id} votes={votes} />
+                {comment.author === 'jessjelly' ? (
+                  <CommentDeleter
+                    comment_id={comment_id}
+                    deleteComment={this.deleteComment}
+                  />
+                ) : null}
               </div>
             );
           })

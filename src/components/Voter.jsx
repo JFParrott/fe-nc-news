@@ -27,11 +27,15 @@ class Voter extends React.Component {
     return (
       <div>
         <button onClick={this.addVote} value={1}>
-          Replace this with up arrow emoji
+          <span role="img" aria-label="Up Vote">
+            ⬆️
+          </span>
         </button>
         <p>{this.props.votes + vote}</p>
         <button onClick={this.addVote} value={-1}>
-          Replace this with down arrow emoji
+          <span role="img" aria-label="Down Vote">
+            ⬇️
+          </span>
         </button>
       </div>
     );

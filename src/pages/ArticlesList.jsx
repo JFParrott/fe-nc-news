@@ -39,7 +39,7 @@ class ArticlesList extends React.Component {
     const { sort_by } = this.state;
     if (prevProps.slug !== slug || prevState.sort_by !== sort_by) {
       getArticles(slug, sort_by).then(({ data: { articles } }) => {
-        this.setState({ articles, isLoading: false });
+        this.setState({ articles, isLoading: false, error: false });
       });
     }
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 class Sorter extends React.Component {
   state = {
@@ -17,7 +18,6 @@ class Sorter extends React.Component {
         Sort by:
         <select id="sorter" required onChange={this.handleChange}>
           <option value="">--Select a sort option--</option>
-
           <option value="created_at" onChange={this.handleChange}>
             Date
           </option>
