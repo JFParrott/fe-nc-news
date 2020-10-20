@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import CommentCard from './CommentCard';
 import Loader from './Loader';
 import Voter from './Voter';
+import { getArticleComments } from '../utils/api';
 
 class CommentsList extends React.Component {
   state = {
@@ -12,25 +12,17 @@ class CommentsList extends React.Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    axios
-      .get(
-        `https://nc-news-jp.herokuapp.com/api/articles/${article_id}/comments`
-      )
-      .then(({ data: { comments } }) => {
-        this.setState({ comments, isLoading: false });
-      });
+    getArticleComments(article_id).then(({ data: { comments } }) => {
+      this.setState({ comments, isLoading: false });
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id, commentAdded } = this.props;
     if (prevProps.commentAdded !== commentAdded) {
-      axios
-        .get(
-          `https://nc-news-jp.herokuapp.com/api/articles/${article_id}/comments`
-        )
-        .then(({ data: { comments } }) => {
-          this.setState({ comments, isLoading: false });
-        });
+      getArticleComments(article_id).then(({ data: { comments } }) => {
+        this.setState({ comments, isLoading: false });
+      });
     }
   }
 

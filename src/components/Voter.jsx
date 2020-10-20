@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import { patchArticleVotes, patchCommentVotes } from '../utils/api';
 
 class Voter extends React.Component {
   state = {
@@ -11,22 +11,14 @@ class Voter extends React.Component {
     const { comment_id, article_id } = this.props;
     const { value } = e.target;
     if (comment_id) {
-      axios
-        .patch(`https://nc-news-jp.herokuapp.com/api/comments/${comment_id}`, {
-          inc_votes: parseInt(value),
-        })
-        .then(() => {
-          this.setState({ vote: parseInt(value), hasVoted: true });
-        });
+      patchCommentVotes(comment_id, value).then(() => {
+        this.setState({ vote: parseInt(value), hasVoted: true });
+      });
     }
     if (article_id) {
-      axios
-        .patch(`https://nc-news-jp.herokuapp.com/api/articles/${article_id}`, {
-          inc_votes: parseInt(value),
-        })
-        .then(() => {
-          this.setState({ vote: parseInt(value), hasVoted: true });
-        });
+      patchArticleVotes(article_id, value).then(() => {
+        this.setState({ vote: parseInt(value), hasVoted: true });
+      });
     }
   };
 

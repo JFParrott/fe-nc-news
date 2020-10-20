@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import axios from 'axios';
+import { getTopics } from '../utils/api';
 
 class Topics extends React.Component {
   state = {
@@ -8,11 +8,9 @@ class Topics extends React.Component {
   };
 
   componentDidMount() {
-    axios
-      .get('https://nc-news-jp.herokuapp.com/api/topics')
-      .then(({ data: { topics } }) => {
-        this.setState({ topics });
-      });
+    getTopics().then(({ data: { topics } }) => {
+      this.setState({ topics });
+    });
   }
 
   render() {

@@ -1,10 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import CommentPoster from '../components/CommentPoster';
 import CommentsList from '../components/CommentsList';
 import Loader from '../components/Loader';
 import Voter from '../components/Voter';
 import ErrorDisplayer from '../components/ErrorDisplayer';
+import { getArticle } from '../utils/api';
 
 class Article extends React.Component {
   state = {
@@ -16,8 +16,7 @@ class Article extends React.Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    axios
-      .get(`https://nc-news-jp.herokuapp.com/api/articles/${article_id}`)
+    getArticle(article_id)
       .then(({ data: { article } }) => {
         this.setState({ article, isLoading: false, commentAdded: false });
       })
