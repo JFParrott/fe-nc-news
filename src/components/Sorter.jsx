@@ -22,12 +22,18 @@ class Sorter extends React.Component {
     addSort(value);
   };
 
+  handleOrderChange = (e) => {
+    const { value } = e.target;
+    const { addSortOrder } = this.props;
+    addSortOrder(value);
+  };
+
   render() {
     return (
       <SortContainer>
         <label htmlFor="sorter">Sort by:</label>
         <SortSelect id="sorter" required onChange={this.handleChange}>
-          <option value="">--Select a sort option--</option>
+          <option value="">--Select option--</option>
           <option value="created_at" onChange={this.handleChange}>
             Date
           </option>
@@ -38,6 +44,11 @@ class Sorter extends React.Component {
             Votes
           </option>
         </SortSelect>
+        <label htmlFor="order">Order:</label>
+        <select id="order" onChange={this.handleOrderChange}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
       </SortContainer>
     );
   }

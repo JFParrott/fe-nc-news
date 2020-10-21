@@ -8,6 +8,11 @@ import styled from 'styled-components';
 const CommentContainer = styled.div`
   display: flex;
   flex-direction: row;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  align-items: center;
+  margin: 2px 7px 0 7px;
 `;
 
 class CommentsList extends React.Component {

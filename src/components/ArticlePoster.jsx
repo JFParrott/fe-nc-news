@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+import { postArticle } from '../utils/api';
+import { navigate } from '@reach/router';
 
 class ArticlePoster extends React.Component {
   state = {
@@ -20,20 +21,25 @@ class ArticlePoster extends React.Component {
   handleSubmit = (e) => {
     const { title, body, topic } = this.state;
     e.preventDefault();
-    axios
-      .post('https://nc-news-jp.herokuapp.com/api/articles', {
-        title,
-        topic,
-        body,
-        author: 'jessjelly',
-      })
-      .then(() => {
-        this.setState({ title: '', body: '', topic: '', articlePosted: true });
-      });
+    postArticle(title, topic, body).then(
+      ({
+        data: {
+          postedArticle: { article_id },
+        },
+      }) => {
+        this.setState({
+          title: '',
+          body: '',
+          topic: '',
+          articlePosted: true,
+        });
+        navigate(`articles/${article_id}`);
+      }
+    );
   };
 
   render() {
-    const { title, body, topic, articlePosted } = this.state;
+    const { title, body, topic, articlePosted, article_id } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -78,7 +84,7 @@ class ArticlePoster extends React.Component {
           </label>
           <button type="submit">Submit</button>
         </form>
-        {articlePosted ? <p>Article successfully posted!</p> : null}
+        {articlePosted ? <p>Created</p> : null}
       </div>
     );
   }

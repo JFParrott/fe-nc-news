@@ -3,6 +3,9 @@ import { delComment } from '../utils/api';
 import styled from 'styled-components';
 
 const DeleteButton = styled.button`
+  position: absolute;
+  right: 8px;
+  margin: 8px;
   height: 2.8vh;
   height: 4vh;
 `;
@@ -18,7 +21,7 @@ const CommentDeleter = (props) => {
   return (
     <DeleteButton onClick={handleClick}>
       <span role="img" aria-label="Delete button">
-        Delete comment
+        Delete
       </span>
     </DeleteButton>
   );

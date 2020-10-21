@@ -9,13 +9,14 @@ const FormContainer = styled.form`
 `;
 
 const InputField = styled.textarea`
-  width: 70vw;
-  height: 20vh;
+  width: 65vw;
+  height: 15vh;
 `;
 
 const SubmitButton = styled.button`
   width: 70px;
   margin-top: 7px;
+  margin-bottom: 10px;
 `;
 
 class CommentPoster extends React.Component {
@@ -34,6 +35,7 @@ class CommentPoster extends React.Component {
     e.preventDefault();
     postComment(article_id, body).then(() => {
       addComment();
+      this.setState({ body: '' });
     });
   };
 

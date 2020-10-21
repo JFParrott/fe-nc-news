@@ -38,6 +38,7 @@ class ArticlesList extends React.Component {
     isLoading: true,
     error: false,
     sort_by: undefined,
+    order: undefined,
   };
 
   componentDidMount() {
@@ -61,16 +62,24 @@ class ArticlesList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { slug } = this.props;
-    const { sort_by } = this.state;
-    if (prevProps.slug !== slug || prevState.sort_by !== sort_by) {
-      getArticles(slug, sort_by).then(({ data: { articles } }) => {
+    const { sort_by, order } = this.state;
+    if (
+      prevProps.slug !== slug ||
+      prevState.sort_by !== sort_by ||
+      prevState.order !== order
+    ) {
+      getArticles(slug, sort_by, order).then(({ data: { articles } }) => {
         this.setState({ articles, isLoading: false, error: false });
       });
     }
   }
 
-  addSort = (value) => {
-    this.setState({ sort_by: value });
+  addSort = (sort_by) => {
+    this.setState({ sort_by });
+  };
+
+  addSortOrder = (order) => {
+    this.setState({ order });
   };
 
   render() {
@@ -79,7 +88,7 @@ class ArticlesList extends React.Component {
     return (
       <div>
         <UserInputContainer>
-          <Sorter addSort={this.addSort} />
+          <Sorter addSort={this.addSort} addSortOrder={this.addSortOrder} />
           <Link to="/submit-article">
             <PostButton>Post article</PostButton>
           </Link>

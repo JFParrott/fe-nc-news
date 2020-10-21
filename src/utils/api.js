@@ -4,9 +4,9 @@ const instance = axios.create({
   baseURL: 'https://nc-news-jp.herokuapp.com/api/',
 });
 
-export const getArticles = (slug, sort_by) => {
+export const getArticles = (slug, sort_by, order) => {
   return instance.get('articles', {
-    params: { topic: slug, sort_by },
+    params: { topic: slug, sort_by, order },
   });
 };
 
@@ -14,6 +14,16 @@ export const postComment = (article_id, body) => {
   return instance.post(`articles/${article_id}/comments`, {
     body,
     username: 'jessjelly',
+  });
+};
+
+export const postArticle = (title, topic, body) => {
+  console.log(title, topic, body);
+  return instance.post('articles', {
+    title,
+    topic,
+    body,
+    author: 'jessjelly',
   });
 };
 
@@ -42,5 +52,5 @@ export const patchArticleVotes = (article_id, value) => {
 };
 
 export const delComment = (comment_id) => {
-  return instance.delete(`comments/${comment_id}`);
+  return instance.patch(`comments/${comment_id}`);
 };
