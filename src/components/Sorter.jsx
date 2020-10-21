@@ -1,9 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const SortSelect = styled.select`
+  margin: 5px 0 5px 7px;
+  height: 2.5vh;
+  font-size: 1.8vh;
+`;
+
 const SortContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  margin-left: 7px;
+  font-size: 2.3vh;
 `;
 class Sorter extends React.Component {
   state = {
@@ -20,7 +26,7 @@ class Sorter extends React.Component {
     return (
       <SortContainer>
         <label htmlFor="sorter">Sort by:</label>
-        <select id="sorter" required onChange={this.handleChange}>
+        <SortSelect id="sorter" required onChange={this.handleChange}>
           <option value="">--Select a sort option--</option>
           <option value="created_at" onChange={this.handleChange}>
             Date
@@ -31,7 +37,7 @@ class Sorter extends React.Component {
           <option value="votes" onChange={this.handleChange}>
             Votes
           </option>
-        </select>
+        </SortSelect>
       </SortContainer>
     );
   }

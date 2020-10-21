@@ -1,11 +1,36 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import ArticleCard from '../components/ArticleCard';
+import ArticleContainer from '../components/ArticleContainer';
 import Loader from '../components/Loader';
 import { getArticles } from '../utils/api';
 import Voter from '../components/Voter';
 import ErrorDisplayer from '../components/ErrorDisplayer';
 import Sorter from '../components/Sorter';
+import styled from 'styled-components';
+
+const ArticleCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  margin: 2px 8px 0 8px;
+  &:hover {
+    background-color: #d4d4d4;
+  }
+`;
+
+const UserInputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+`;
+
+const PostButton = styled.button`
+  position: absolute;
+  right: 0;
+  margin: 5px 10px 5px 0;
+  height: 2.7vh;
+  font-size: 2vh;
+`;
 
 class ArticlesList extends React.Component {
   state = {
@@ -53,23 +78,25 @@ class ArticlesList extends React.Component {
     if (error) return <ErrorDisplayer msg={error.msg} status={error.status} />;
     return (
       <div>
-        <Sorter addSort={this.addSort} />
+        <UserInputContainer>
+          <Sorter addSort={this.addSort} />
+          <Link to="/submit-article">
+            <PostButton>Post article</PostButton>
+          </Link>
+        </UserInputContainer>
         {isLoading ? (
           <Loader />
         ) : (
           articles.map((article) => {
             const { article_id, votes } = article;
             return (
-              <div key={article_id}>
-                <ArticleCard article={article} key={article_id} />
+              <ArticleCard key={article_id}>
                 <Voter article_id={article_id} votes={votes} />
-              </div>
+                <ArticleContainer article={article} key={article_id} />
+              </ArticleCard>
             );
           })
         )}
-        <Link to="/submit-article">
-          <button>Post your own article</button>
-        </Link>
       </div>
     );
   }

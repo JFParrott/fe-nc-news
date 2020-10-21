@@ -1,6 +1,11 @@
 import React from 'react';
 import { postComment } from '../utils/api';
+import styled from 'styled-components';
 
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 class CommentPoster extends React.Component {
   state = {
     body: '',
@@ -24,7 +29,7 @@ class CommentPoster extends React.Component {
     const { body } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <FormContainer onSubmit={this.handleSubmit}>
           <label>
             <input
               type="text"
@@ -34,7 +39,7 @@ class CommentPoster extends React.Component {
             ></input>
           </label>
           <button type="submit">Submit</button>
-        </form>
+        </FormContainer>
       </div>
     );
   }

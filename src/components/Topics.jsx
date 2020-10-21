@@ -4,7 +4,7 @@ import { getTopics } from '../utils/api';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  font-size: 2vh;
+  font-size: 1.8vh;
   height: 100%;
   background-color: #f2fcff;
   margin: 0px 5px 0px 5px;

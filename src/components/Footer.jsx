@@ -1,10 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const FooterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <FooterContainer>
       <p>Powered by.. coffee</p>
-    </div>
+    </FooterContainer>
   );
 };
 

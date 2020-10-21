@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@reach/router';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
@@ -12,13 +13,15 @@ const HeaderContainer = styled.header`
 const HeaderText = styled.h1`
   color: #76a4ab;
   margin: 0 3vw 0 3vw;
-  font-size: 5vh;
+  font-size: 4vh;
 `;
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <HeaderText className="header">Northcoders News.. Now!</HeaderText>
+      <Link to="/">
+        <HeaderText className="header">Northcoders News.. Now!</HeaderText>
+      </Link>
     </HeaderContainer>
   );
 };

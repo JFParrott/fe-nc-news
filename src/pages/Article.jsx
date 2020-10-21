@@ -5,6 +5,34 @@ import Loader from '../components/Loader';
 import Voter from '../components/Voter';
 import ErrorDisplayer from '../components/ErrorDisplayer';
 import { getArticle } from '../utils/api';
+import { formatTime } from '../utils/formatTime';
+import styled from 'styled-components';
+
+const ArticleHead = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+`;
+
+const ArticleHeader = styled.h2`
+  margin: 0 0 0 7px;
+  font-size: 3vh;
+`;
+
+const ArticleInfo = styled.p`
+  margin: 0 0 0 7px;
+  font-size: 2vh;
+`;
+
+const ArticleBody = styled.p`
+  margin: 15px;
+  padding: 5px;
+  font-size: 2.2vh;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  line-height: 20px;
+`;
 
 class Article extends React.Component {
   state = {
@@ -54,6 +82,8 @@ class Article extends React.Component {
       error,
     } = this.state;
 
+    const formattedTime = formatTime(created_at);
+
     if (error) return <ErrorDisplayer msg={error.msg} status={error.status} />;
     return (
       <div>
@@ -61,12 +91,17 @@ class Article extends React.Component {
           <Loader />
         ) : (
           <>
-            <h2>{title}</h2>
-            <p>
-              Submitted by: {author} at {created_at} <br />
-            </p>
-            <p>{body}</p>
-            <Voter article_id={article_id} votes={votes} />
+            <ArticleHead>
+              <Voter article_id={article_id} votes={votes} />
+              <div>
+                <ArticleHeader>{title}</ArticleHeader>
+                <ArticleInfo>
+                  Submitted by {author} {formattedTime} <br />
+                  {comment_count} comments
+                </ArticleInfo>
+              </div>
+            </ArticleHead>
+            <ArticleBody>{body}</ArticleBody>
             <CommentPoster
               article_id={article_id}
               addComment={this.addComment}
