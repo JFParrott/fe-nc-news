@@ -6,12 +6,12 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #fad970;
+  background-color: #123c69;
   border: 1px solid black;
 `;
 
 const HeaderText = styled.h1`
-  color: #76a4ab;
+  color: #ac3b61;
   margin: 0 3vw 0 3vw;
   font-size: 4vh;
 `;

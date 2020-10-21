@@ -7,9 +7,18 @@ const SortSelect = styled.select`
   font-size: 1.8vh;
 `;
 
+const OrderSelect = styled.select`
+  height: 2.5vh;
+  font-size: 1.8vh;
+`;
+
 const SortContainer = styled.div`
   margin-left: 7px;
-  font-size: 2.3vh;
+  font-size: 2vh;
+  @media screen and (max-width: 370px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 class Sorter extends React.Component {
   state = {
@@ -44,11 +53,11 @@ class Sorter extends React.Component {
             Votes
           </option>
         </SortSelect>
-        <label htmlFor="order">Order:</label>
-        <select id="order" onChange={this.handleOrderChange}>
+        <OrderSelect id="order" onChange={this.handleOrderChange}>
+          <option value="">--Select order--</option>
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
-        </select>
+        </OrderSelect>
       </SortContainer>
     );
   }

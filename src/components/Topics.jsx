@@ -4,9 +4,9 @@ import { getTopics } from '../utils/api';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  font-size: 1.8vh;
+  font-size: 1.5vh;
   height: 100%;
-  background-color: #f2fcff;
+  background-color: #eee2dc;
   margin: 0px 5px 0px 5px;
   border: 1px;
   &:hover {
@@ -20,7 +20,7 @@ const TopicsContainer = styled.div`
   align-items: center;
   width: 100vw;
   border: 1px solid black;
-  background-color: #f2fcff;
+  background-color: #eee2dc;
 `;
 
 class Topics extends React.Component {
@@ -41,7 +41,7 @@ class Topics extends React.Component {
         {topics.map(({ slug, description }) => {
           return (
             <Link to={`/topics/${slug}`} key={slug}>
-              <Button className="topic-button">- {description} -</Button>
+              <Button className="topic-button">{description}</Button>
             </Link>
           );
         })}

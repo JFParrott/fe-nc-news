@@ -13,8 +13,9 @@ const ArticleCard = styled.div`
   flex-direction: row;
   background-color: white;
   margin: 2px 8px 0 8px;
+  border-radius: 3px;
   &:hover {
-    background-color: #d4d4d4;
+    background-color: #bab2b5;
   }
 `;
 
