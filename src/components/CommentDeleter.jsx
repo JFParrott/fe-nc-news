@@ -1,5 +1,11 @@
 import React from 'react';
 import { delComment } from '../utils/api';
+import styled from 'styled-components';
+
+const DeleteButton = styled.button`
+  height: 2.8vh;
+  height: 4vh;
+`;
 
 const CommentDeleter = (props) => {
   const handleClick = () => {
@@ -10,11 +16,11 @@ const CommentDeleter = (props) => {
   };
 
   return (
-    <button onClick={handleClick}>
+    <DeleteButton onClick={handleClick}>
       <span role="img" aria-label="Delete button">
         Delete comment
       </span>
-    </button>
+    </DeleteButton>
   );
 };
 

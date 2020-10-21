@@ -5,7 +5,19 @@ import styled from 'styled-components';
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
+  margin: 0 15px 0 15px;
 `;
+
+const InputField = styled.textarea`
+  width: 70vw;
+  height: 20vh;
+`;
+
+const SubmitButton = styled.button`
+  width: 70px;
+  margin-top: 7px;
+`;
+
 class CommentPoster extends React.Component {
   state = {
     body: '',
@@ -30,15 +42,16 @@ class CommentPoster extends React.Component {
     return (
       <div>
         <FormContainer onSubmit={this.handleSubmit}>
+          <p>Post a comment...</p>
           <label>
-            <input
+            <InputField
               type="text"
               onChange={this.handleChange}
               value={body}
               required
-            ></input>
+            ></InputField>
           </label>
-          <button type="submit">Submit</button>
+          <SubmitButton type="submit">Submit</SubmitButton>
         </FormContainer>
       </div>
     );

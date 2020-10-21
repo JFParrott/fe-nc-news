@@ -3,7 +3,12 @@ import CommentCard from './CommentCard';
 import Loader from './Loader';
 import Voter from './Voter';
 import { getArticleComments } from '../utils/api';
-import CommentDeleter from './CommentDeleter';
+import styled from 'styled-components';
+
+const CommentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 class CommentsList extends React.Component {
   state = {
@@ -46,16 +51,13 @@ class CommentsList extends React.Component {
           comments.map((comment) => {
             const { comment_id, votes } = comment;
             return (
-              <div key={comment_id}>
-                <CommentCard comment={comment} />
+              <CommentContainer key={comment_id}>
                 <Voter comment_id={comment_id} votes={votes} />
-                {comment.author === 'jessjelly' ? (
-                  <CommentDeleter
-                    comment_id={comment_id}
-                    deleteComment={this.deleteComment}
-                  />
-                ) : null}
-              </div>
+                <CommentCard
+                  comment={comment}
+                  deleteComment={this.deleteComment}
+                />
+              </CommentContainer>
             );
           })
         )}

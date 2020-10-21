@@ -11,7 +11,7 @@ import styled from 'styled-components';
 const ArticleHead = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 5px;
+  margin: 5px 0 0 5px;
 `;
 
 const ArticleHeader = styled.h2`
@@ -31,7 +31,7 @@ const ArticleBody = styled.p`
   background-color: white;
   border: 2px solid black;
   border-radius: 5px;
-  line-height: 20px;
+  line-height: 2.8vh;
 `;
 
 class Article extends React.Component {
