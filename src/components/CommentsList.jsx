@@ -61,7 +61,7 @@ class CommentsList extends React.Component {
           comments.map((comment) => {
             const { comment_id, votes } = comment;
             return (
-              <CommentContainer key={comment_id}>
+              <CommentContainer id="comments" key={comment_id}>
                 <Voter comment_id={comment_id} votes={votes} />
                 <CommentCard
                   comment={comment}

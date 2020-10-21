@@ -28,7 +28,7 @@ const UserInputContainer = styled.div`
 const PostButton = styled.button`
   position: absolute;
   right: 0;
-  margin: 5px 10px 5px 0;
+  margin: 5px 4vw 5px 0;
   height: 2.7vh;
   font-size: 2vh;
 `;

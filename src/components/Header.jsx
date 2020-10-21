@@ -19,8 +19,8 @@ const HeaderText = styled.h1`
 const Header = () => {
   return (
     <HeaderContainer>
-      <Link to="/">
-        <HeaderText className="header">Northcoders News.. Now!</HeaderText>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <HeaderText>Northcoders News.. Now!</HeaderText>
       </Link>
     </HeaderContainer>
   );

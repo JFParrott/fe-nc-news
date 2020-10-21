@@ -2,19 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SortSelect = styled.select`
-  margin: 5px 0 5px 7px;
+  margin: 3px 0 5px 7px;
   height: 2.5vh;
   font-size: 1.8vh;
+  @media screen and (max-width: 440px) {
+    margin-bottom: 0;
+  }
 `;
 
 const OrderSelect = styled.select`
-  margin: 5px 0 5px 7px;
+  margin: 3px 0 5px 7px;
   height: 2.5vh;
   font-size: 1.8vh;
 `;
 
 const SortContainer = styled.div`
-  margin-left: 7px;
+  margin-left: 4vw;
   font-size: 2vh;
   @media screen and (max-width: 440px) {
     display: flex;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
   display: flex;
-  justify-self: flex-end;
+  justify-content: center;
 `;
 
 const Footer = () => {

@@ -4,7 +4,7 @@ import { formatTime } from '../utils/formatTime';
 import styled from 'styled-components';
 
 const ArticleSection = styled.div`
-  margin: 5px 0 5px 10px;
+  margin: 5px 2vw 5px 0;
 `;
 
 const AdditionalArticleInfo = styled.p`
@@ -23,7 +23,9 @@ const ArticleContainer = (props) => {
       <AdditionalArticleInfo>
         Submitted {formattedTime} by {author}
         <br />
-        <Link to={`/articles/${article_id}`}>{comment_count} comments </Link>
+        <Link to={`/articles/${article_id}#comments`}>
+          {comment_count} comments{' '}
+        </Link>
       </AdditionalArticleInfo>
     </ArticleSection>
   );

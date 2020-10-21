@@ -16,7 +16,7 @@ const VoterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px 0 10px;
+  margin: 0 2vw 0 2vw;
   @media screen and (max-width: 450px) {
     margin: 0 3px 0 3px;
   }
