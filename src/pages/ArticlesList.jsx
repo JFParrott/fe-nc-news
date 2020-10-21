@@ -12,7 +12,7 @@ const ArticleCard = styled.div`
   display: flex;
   flex-direction: row;
   background-color: white;
-  margin: 2px 8px 0 8px;
+  margin: 2px 4vw 0 4vw;
   border-radius: 3px;
   &:hover {
     background-color: #bab2b5;

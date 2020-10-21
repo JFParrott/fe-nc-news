@@ -9,6 +9,7 @@ const FormContainer = styled.form`
 `;
 
 const InputField = styled.textarea`
+  font-family: 'Open Sans', sans-serif;
   width: 65vw;
   height: 15vh;
 `;

@@ -8,6 +8,7 @@ const SortSelect = styled.select`
 `;
 
 const OrderSelect = styled.select`
+  margin: 5px 0 5px 7px;
   height: 2.5vh;
   font-size: 1.8vh;
 `;
@@ -15,7 +16,7 @@ const OrderSelect = styled.select`
 const SortContainer = styled.div`
   margin-left: 7px;
   font-size: 2vh;
-  @media screen and (max-width: 370px) {
+  @media screen and (max-width: 440px) {
     display: flex;
     flex-direction: column;
   }

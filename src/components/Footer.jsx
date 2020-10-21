@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   display: flex;
-  justify-content: center;
+  justify-self: flex-end;
 `;
 
 const Footer = () => {

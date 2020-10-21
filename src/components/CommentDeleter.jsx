@@ -14,7 +14,7 @@ const CommentDeleter = (props) => {
   const handleClick = () => {
     const { comment_id, deleteComment } = props;
     delComment(comment_id).then(() => {
-      deleteComment();
+      deleteComment(comment_id);
     });
   };
 

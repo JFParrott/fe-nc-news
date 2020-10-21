@@ -42,8 +42,13 @@ class CommentsList extends React.Component {
     }
   }
 
-  deleteComment = () => {
-    this.setState({ commentDeleted: true });
+  deleteComment = (comment_id) => {
+    this.setState((prevState) => {
+      const filteredComments = prevState.comments.filter((comment) => {
+        return comment.comment_id !== comment_id;
+      });
+      return { comments: filteredComments };
+    });
   };
 
   render() {

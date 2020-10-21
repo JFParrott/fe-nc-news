@@ -25,7 +25,7 @@ const ArticleInfo = styled.p`
 `;
 
 const ArticleBody = styled.p`
-  margin: 15px;
+  margin: 20px 5vw 5px 5vw;
   padding: 5px;
   font-size: 2.2vh;
   background-color: white;

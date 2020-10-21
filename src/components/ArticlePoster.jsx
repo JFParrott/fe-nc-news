@@ -14,6 +14,7 @@ const ArticleForm = styled.form`
 `;
 
 const TitleInput = styled.textarea`
+  font-family: 'Open Sans', sans-serif;
   width: 480px;
   margin: 5px;
   @media screen and (max-width: 600px) {
@@ -25,6 +26,7 @@ const TitleInput = styled.textarea`
 `;
 
 const BodyInput = styled.textarea`
+  font-family: 'Open Sans', sans-serif;
   width: 550px;
   height: 200px;
   margin: 5px;
@@ -44,6 +46,7 @@ const TopicSelect = styled.select`
 
 const ArticleSubmit = styled.button`
   width: 100px;
+  margin: 5px;
 `;
 
 class ArticlePoster extends React.Component {

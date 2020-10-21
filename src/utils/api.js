@@ -52,5 +52,5 @@ export const patchArticleVotes = (article_id, value) => {
 };
 
 export const delComment = (comment_id) => {
-  return instance.patch(`comments/${comment_id}`);
+  return instance.delete(`comments/${comment_id}`);
 };

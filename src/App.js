@@ -8,10 +8,17 @@ import ArticlesList from './pages/ArticlesList';
 import Article from './pages/Article';
 import ArticlePoster from './components/ArticlePoster';
 import ErrorDisplayer from './components/ErrorDisplayer';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 const App = () => {
   return (
-    <div>
+    <AppContainer>
       <Header />
       <Topics />
       <Router>
@@ -22,7 +29,7 @@ const App = () => {
         <ErrorDisplayer default msg="Page does not exist" status="404" />
       </Router>
       <Footer />
-    </div>
+    </AppContainer>
   );
 };
 
