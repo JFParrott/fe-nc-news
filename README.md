@@ -5,7 +5,7 @@ A hosted version of the project can be found here:
 *placeholder*
 
 The application makes requests to an API which I built using Node.js and, in particular, Express.
-The GitHub repository for that API can be found here:
+For more information the GitHub repository for that API can be found here:
 https://github.com/JFParrott/nc-news
 
 You can access the API directly by going to:
