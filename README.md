@@ -2,7 +2,7 @@
 
 This project was built using React and the styling was done with Styled Components.
 A hosted version of the project can be found here:
-*placeholder*
+https://nc-news-jp.netlify.app/
 
 The application makes requests to an API which I built using Node.js and, in particular, Express.
 For more information, the GitHub repository for that API can be found here:
