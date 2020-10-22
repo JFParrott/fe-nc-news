@@ -7,6 +7,7 @@ import Voter from '../components/Voter';
 import ErrorDisplayer from '../components/ErrorDisplayer';
 import Sorter from '../components/Sorter';
 import styled from 'styled-components';
+import Pagination from '../components/Pagination';
 
 const ArticleCard = styled.div`
   display: flex;
@@ -36,6 +37,8 @@ const PostButton = styled.button`
 class ArticlesList extends React.Component {
   state = {
     articles: [],
+    total_count: 0,
+    page: 1,
     isLoading: true,
     error: false,
     sort_by: undefined,
@@ -44,10 +47,10 @@ class ArticlesList extends React.Component {
 
   componentDidMount() {
     const { slug } = this.props;
-    const { sort_by } = this.state;
-    getArticles(slug, sort_by)
-      .then(({ data: { articles } }) => {
-        this.setState({ articles, isLoading: false });
+    const { sort_by, order, page } = this.state;
+    getArticles(slug, sort_by, order, page)
+      .then(({ data: { articles, total_count } }) => {
+        this.setState({ articles, total_count, isLoading: false });
       })
       .catch(
         ({
@@ -63,15 +66,23 @@ class ArticlesList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { slug } = this.props;
-    const { sort_by, order } = this.state;
+    const { sort_by, order, page } = this.state;
     if (
       prevProps.slug !== slug ||
       prevState.sort_by !== sort_by ||
-      prevState.order !== order
+      prevState.order !== order ||
+      prevState.page !== page
     ) {
-      getArticles(slug, sort_by, order).then(({ data: { articles } }) => {
-        this.setState({ articles, isLoading: false, error: false });
-      });
+      getArticles(slug, sort_by, order, page).then(
+        ({ data: { articles, total_count } }) => {
+          this.setState({
+            articles,
+            total_count,
+            isLoading: false,
+            error: false,
+          });
+        }
+      );
     }
   }
 
@@ -83,8 +94,18 @@ class ArticlesList extends React.Component {
     this.setState({ order });
   };
 
+  changePage = (newPage) => {
+    this.setState({ page: newPage });
+  };
+
   render() {
-    const { articles, isLoading, error } = this.state;
+    const { articles, total_count, isLoading, error, page } = this.state;
+    const articlesPerPage = 10;
+    const pageCount = Math.ceil(total_count / articlesPerPage);
+    const atStart = page === 1;
+    const atEnd = page === pageCount;
+    const pages = Array.from({ length: pageCount }).map((item, i) => i + 1);
+
     if (error) return <ErrorDisplayer msg={error.msg} status={error.status} />;
     return (
       <div>
@@ -107,6 +128,13 @@ class ArticlesList extends React.Component {
             );
           })
         )}
+        <Pagination
+          page={page}
+          atStart={atStart}
+          atEnd={atEnd}
+          pages={pages}
+          changePage={this.changePage}
+        />
       </div>
     );
   }

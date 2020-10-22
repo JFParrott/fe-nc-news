@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   font-size: 1.5vh;
   height: 100%;
-  background-color: #eee2dc;
+  background-color: #d8c3a5;
   margin: 0px 5px 0px 5px;
   border: 1px;
   &:hover {
@@ -20,7 +20,7 @@ const TopicsContainer = styled.div`
   align-items: center;
   width: 100vw;
   border: 1px solid black;
-  background-color: #eee2dc;
+  background-color: #d8c3a5;
 `;
 
 class Topics extends React.Component {

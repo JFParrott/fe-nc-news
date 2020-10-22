@@ -23,9 +23,7 @@ const ArticleContainer = (props) => {
       <AdditionalArticleInfo>
         Submitted {formattedTime} by {author}
         <br />
-        <Link to={`/articles/${article_id}#comments`}>
-          {comment_count} comments{' '}
-        </Link>
+        <Link to={`/articles/${article_id}`}>{comment_count} comments </Link>
       </AdditionalArticleInfo>
     </ArticleSection>
   );

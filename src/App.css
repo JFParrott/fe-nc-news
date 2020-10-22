@@ -1,4 +1,8 @@
 body {
-  background-color: #edc7b7;
+  background-color: #eae7dc;
   font-family: 'Open Sans', sans-serif;
+}
+
+.button-background {
+  background-color: #d8c3a5;
 }

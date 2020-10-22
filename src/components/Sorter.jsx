@@ -5,6 +5,7 @@ const SortSelect = styled.select`
   margin: 3px 0 5px 7px;
   height: 2.5vh;
   font-size: 1.8vh;
+  border-radius: 3px;
   @media screen and (max-width: 440px) {
     margin-bottom: 0;
   }
@@ -14,6 +15,7 @@ const OrderSelect = styled.select`
   margin: 3px 0 5px 7px;
   height: 2.5vh;
   font-size: 1.8vh;
+  border-radius: 3px;
 `;
 
 const SortContainer = styled.div`

@@ -4,6 +4,7 @@ import Loader from './Loader';
 import Voter from './Voter';
 import { getArticleComments } from '../utils/api';
 import styled from 'styled-components';
+import Pagination from './Pagination';
 
 const CommentContainer = styled.div`
   display: flex;
@@ -18,25 +19,29 @@ const CommentContainer = styled.div`
 class CommentsList extends React.Component {
   state = {
     comments: [],
+    page: 1,
+    total_count: 0,
     isLoading: true,
     commentDeleted: false,
   };
 
   componentDidMount() {
-    const { article_id } = this.props;
-    getArticleComments(article_id).then(({ data: { comments } }) => {
-      this.setState({ comments, isLoading: false });
+    const { article_id, comment_count } = this.props;
+    const { page } = this.state;
+    getArticleComments(article_id, page).then(({ data: { comments } }) => {
+      this.setState({ comments, total_count: comment_count, isLoading: false });
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id, commentAdded } = this.props;
-    const { commentDeleted } = this.state;
+    const { commentDeleted, page } = this.state;
     if (
       prevProps.commentAdded !== commentAdded ||
-      prevState.commentDeleted !== commentDeleted
+      prevState.commentDeleted !== commentDeleted ||
+      prevState.page !== page
     ) {
-      getArticleComments(article_id).then(({ data: { comments } }) => {
+      getArticleComments(article_id, page).then(({ data: { comments } }) => {
         this.setState({ comments, isLoading: false });
       });
     }
@@ -51,8 +56,17 @@ class CommentsList extends React.Component {
     });
   };
 
+  changePage = (newPage) => {
+    this.setState({ page: newPage });
+  };
+
   render() {
-    const { comments, isLoading } = this.state;
+    const { comments, isLoading, page, total_count } = this.state;
+    const commentsPerPage = 10;
+    const pageCount = Math.ceil(total_count / commentsPerPage);
+    const atStart = page === 1;
+    const atEnd = page === pageCount;
+    const pages = Array.from({ length: pageCount }).map((item, i) => i + 1);
     return (
       <div>
         {isLoading ? (
@@ -71,6 +85,13 @@ class CommentsList extends React.Component {
             );
           })
         )}
+        <Pagination
+          page={page}
+          atStart={atStart}
+          atEnd={atEnd}
+          pages={pages}
+          changePage={this.changePage}
+        />
       </div>
     );
   }
