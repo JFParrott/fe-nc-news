@@ -11,6 +11,8 @@ https://github.com/JFParrott/nc-news
 You can access the API directly by going to:
 https://nc-news-jp.herokuapp.com/api/articles
 
+The default user for this app is 'jessjelly'. This means that articles and comments created by this user may be deleted.
+
 ## Getting started
 
 In order to get this project up and running:
