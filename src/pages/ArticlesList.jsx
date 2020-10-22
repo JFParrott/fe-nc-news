@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from '@reach/router';
 import ArticleContainer from '../components/ArticleContainer';
 import Loader from '../components/Loader';
-import { getArticles } from '../utils/api';
+import { getArticles, deleteArticle } from '../utils/api';
 import Voter from '../components/Voter';
 import ErrorDisplayer from '../components/ErrorDisplayer';
 import Sorter from '../components/Sorter';
 import styled from 'styled-components';
 import Pagination from '../components/Pagination';
+import ArticleDeleter from '../components/ArticleDeleter';
 
 const ArticleCard = styled.div`
   display: flex;
@@ -98,6 +99,17 @@ class ArticlesList extends React.Component {
     this.setState({ page: newPage });
   };
 
+  handleClick = (article_id) => {
+    deleteArticle(article_id).then(() => {
+      this.setState((prevState) => {
+        const filteredArticles = prevState.articles.filter((article) => {
+          return article.article_id !== article_id;
+        });
+        return { articles: filteredArticles };
+      });
+    });
+  };
+
   render() {
     const { articles, total_count, isLoading, error, page } = this.state;
     const articlesPerPage = 10;
@@ -124,6 +136,12 @@ class ArticlesList extends React.Component {
               <ArticleCard key={article_id}>
                 <Voter article_id={article_id} votes={votes} />
                 <ArticleContainer article={article} key={article_id} />
+                {article.author === 'jessjelly' ? (
+                  <ArticleDeleter
+                    handleClick={this.handleClick}
+                    article_id={article_id}
+                  />
+                ) : null}
               </ArticleCard>
             );
           })

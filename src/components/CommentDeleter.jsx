@@ -18,13 +18,7 @@ const CommentDeleter = (props) => {
     });
   };
 
-  return (
-    <DeleteButton onClick={handleClick}>
-      <span role="img" aria-label="Delete button">
-        Delete
-      </span>
-    </DeleteButton>
-  );
+  return <DeleteButton onClick={handleClick}>Delete</DeleteButton>;
 };
 
 export default CommentDeleter;

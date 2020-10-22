@@ -26,6 +26,10 @@ export const postArticle = (title, topic, body) => {
   });
 };
 
+export const deleteArticle = (article_id) => {
+  return instance.delete(`articles/${article_id}`);
+};
+
 export const getArticleComments = (article_id, page) => {
   return instance.get(`articles/${article_id}/comments`, {
     params: { p: page },
