@@ -19,16 +19,16 @@ const AppContainer = styled.div`
 const App = () => {
   return (
     <AppContainer>
-      <Header />
-      <Topics />
-      <Router>
+      <Header className="header" />
+      <Topics className="topics" />
+      <Router className="router">
         <ArticlesList path="/" />
         <ArticlesList path="/topics/:slug" />
         <Article path="/articles/:article_id" />
         <ArticlePoster path="/submit-article" />
         <ErrorDisplayer default msg="Page does not exist" status="404" />
       </Router>
-      <Footer />
+      <Footer className="footer" />
     </AppContainer>
   );
 };

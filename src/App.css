@@ -6,3 +6,12 @@ body {
 .button-background {
   background-color: #d8c3a5;
 }
+
+.router {
+  height: 100%;
+  min-height: 83vh;
+}
+
+/* .footer {
+  border: 1px solid black;
+} */

@@ -33,6 +33,11 @@ const PostButton = styled.button`
   margin: 5px 4vw 5px 0;
   height: 2.7vh;
   font-size: 2vh;
+  color: #123c69;
+  @media screen and (max-height: 600px) {
+    height: 15px;
+    font-size: 12px;
+  }
 `;
 
 class ArticlesList extends React.Component {

@@ -9,6 +9,10 @@ const SortSelect = styled.select`
   @media screen and (max-width: 440px) {
     margin-bottom: 0;
   }
+  @media screen and (max-height: 600px) {
+    height: 15px;
+    font-size: 12px;
+  }
 `;
 
 const OrderSelect = styled.select`
@@ -16,6 +20,10 @@ const OrderSelect = styled.select`
   height: 2.5vh;
   font-size: 1.8vh;
   border-radius: 3px;
+  @media screen and (max-height: 600px) {
+    height: 15px;
+    font-size: 12px;
+  }
 `;
 
 const SortContainer = styled.div`
@@ -24,6 +32,9 @@ const SortContainer = styled.div`
   @media screen and (max-width: 440px) {
     display: flex;
     flex-direction: column;
+  }
+  @media screen and (max-height: 600px) {
+    font-size: 12px;
   }
 `;
 class Sorter extends React.Component {
