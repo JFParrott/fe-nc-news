@@ -21,6 +21,7 @@ const TopicsContainer = styled.div`
   width: 100vw;
   border: 1px solid black;
   background-color: #d8c3a5;
+  min-height: 2.8vh;
 `;
 
 class Topics extends React.Component {
