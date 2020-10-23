@@ -17,7 +17,7 @@ const ArticleCard = styled.div`
   margin: 2px 4vw 0 4vw;
   border-radius: 3px;
   &:hover {
-    background-color: #bab2b5;
+    background-color: #c2babd;
   }
 `;
 
@@ -31,9 +31,11 @@ const PostButton = styled.button`
   position: absolute;
   right: 0;
   margin: 5px 4vw 5px 0;
-  height: 2.7vh;
+  height: 2.8vh;
   font-size: 2vh;
   color: #123c69;
+  border-radius: 3px;
+  background-color: white;
   @media screen and (max-height: 600px) {
     height: 15px;
     font-size: 12px;

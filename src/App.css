@@ -11,3 +11,16 @@ body {
   height: 100%;
   min-height: 83vh;
 }
+
+.link {
+  color: #e85a4f;
+  text-decoration: none;
+}
+
+.green {
+  color: #1aeb1a;
+}
+
+.red {
+  color: red;
+}

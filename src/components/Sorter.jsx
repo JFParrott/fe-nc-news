@@ -3,9 +3,11 @@ import styled from 'styled-components';
 
 const SortSelect = styled.select`
   margin: 3px 0 5px 7px;
-  height: 2.5vh;
+  height: 2.8vh;
   font-size: 1.8vh;
-  border-radius: 3px;
+  border-radius: 5px;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
   @media screen and (max-width: 440px) {
     margin-bottom: 0;
   }
@@ -17,9 +19,11 @@ const SortSelect = styled.select`
 
 const OrderSelect = styled.select`
   margin: 3px 0 5px 7px;
-  height: 2.5vh;
+  height: 2.8vh;
   font-size: 1.8vh;
-  border-radius: 3px;
+  border-radius: 5px;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
   @media screen and (max-height: 600px) {
     height: 15px;
     font-size: 12px;

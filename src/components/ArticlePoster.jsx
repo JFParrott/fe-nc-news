@@ -4,7 +4,7 @@ import { navigate } from '@reach/router';
 import styled from 'styled-components';
 
 const FormIntro = styled.p`
-  margin-left: 4px;
+  margin-left: 10px;
 `;
 
 const ArticleForm = styled.form`
@@ -42,11 +42,19 @@ const BodyInput = styled.textarea`
 const TopicSelect = styled.select`
   margin: 5px;
   width: 150px;
+  height: 2.8vh;
+  font-size: 1.8vh;
+  border-radius: 5px;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
 `;
 
 const ArticleSubmit = styled.button`
   width: 100px;
   margin: 5px;
+  border-radius: 3px;
+  color: #e85a4f;
+  background-color: #e8e1e4;
 `;
 
 class ArticlePoster extends React.Component {

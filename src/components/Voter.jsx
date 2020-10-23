@@ -22,6 +22,21 @@ const VoterContainer = styled.div`
   }
 `;
 
+const UpVoteButton = styled.span`
+  font-size: 20px;
+  border: none;
+  &:hover {
+    color: #1aeb1a;
+  }
+`;
+
+const DownVoteButton = styled.span`
+  font-size: 20px;
+  &:hover {
+    color: red;
+  }
+`;
+
 class Voter extends React.Component {
   state = {
     vote: 0,
@@ -74,9 +89,9 @@ class Voter extends React.Component {
             }
           }}
         >
-          <span role="img" aria-label="Up Vote">
-            ⬆️
-          </span>
+          <UpVoteButton className={vote === 1 ? 'green' : null}>
+            &#8679;
+          </UpVoteButton>
         </VoteButton>
         <VoteCount>{this.props.votes + vote}</VoteCount>
         <VoteButton
@@ -89,9 +104,9 @@ class Voter extends React.Component {
             }
           }}
         >
-          <span role="img" aria-label="Down Vote">
-            ⬇️
-          </span>
+          <DownVoteButton className={vote === -1 ? 'red' : null}>
+            &#8681;
+          </DownVoteButton>
         </VoteButton>
       </VoterContainer>
     );

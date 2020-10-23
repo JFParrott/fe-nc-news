@@ -5,7 +5,9 @@ const ArticleDelete = styled.button`
   height: 2.7vh;
   position: absolute;
   right: 4vw;
+  border-radius: 3px;
   color: #e85a4f;
+  background-color: #e8e1e4;
   @media screen and (max-height: 650px) {
     height: 20px;
   }

@@ -19,11 +19,16 @@ const ArticleContainer = (props) => {
   const formattedTime = formatTime(created_at);
   return (
     <ArticleSection>
-      <Link to={`/articles/${article_id}`}>{title}</Link> <br />
+      <Link to={`/articles/${article_id}`} className="link">
+        {title}
+      </Link>{' '}
+      <br />
       <AdditionalArticleInfo>
         Submitted {formattedTime} by {author}
         <br />
-        <Link to={`/articles/${article_id}`}>{comment_count} comments </Link>
+        <Link to={`/articles/${article_id}`} className="link">
+          {comment_count} comments{' '}
+        </Link>
       </AdditionalArticleInfo>
     </ArticleSection>
   );

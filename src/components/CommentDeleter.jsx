@@ -7,7 +7,9 @@ const DeleteButton = styled.button`
   right: 8px;
   margin: 8px;
   height: 2.8vh;
-  height: 4vh;
+  border-radius: 3px;
+  color: #e85a4f;
+  background-color: #e8e1e4;
 `;
 
 const CommentDeleter = (props) => {

@@ -18,6 +18,9 @@ const SubmitButton = styled.button`
   width: 70px;
   margin-top: 7px;
   margin-bottom: 10px;
+  border-radius: 3px;
+  color: #e85a4f;
+  background-color: #e8e1e4;
 `;
 
 class CommentPoster extends React.Component {
