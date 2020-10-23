@@ -5,6 +5,9 @@ import styled from 'styled-components';
 
 const ArticleSection = styled.div`
   margin: 5px 2vw 5px 0;
+  @media screen and (max-width: 750px) {
+    width: 60vw;
+  }
 `;
 
 const AdditionalArticleInfo = styled.p`

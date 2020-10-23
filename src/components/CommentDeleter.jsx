@@ -8,6 +8,10 @@ const DeleteButton = styled.button`
   margin: 8px;
   height: 2.8vh;
   border-radius: 3px;
+  border: 1px solid black;
+  &:hover {
+    background-color: #c2babd;
+  }
   color: #e85a4f;
   background-color: #e8e1e4;
 `;
