@@ -1,3 +1,5 @@
+# JP News
+
 ## About
 
 This project was built using React and the styling was done with Styled Components.
@@ -13,18 +15,26 @@ https://nc-news-jp.herokuapp.com/api/articles
 
 The default user for this app is 'jessjelly'. This means that articles and comments created by this user may be deleted.
 
+## Requirements
+
+Node.js is required in order to run this project.
+
 ## Getting started
 
-In order to get this project up and running:
+In order to get this project up and running follow the commands below.
 
-### `npm i`
+```$ npm i`
 
 This will install the dependencies required to make the app function.
 
-### `npm start`
+```$ npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+```
+
+```
