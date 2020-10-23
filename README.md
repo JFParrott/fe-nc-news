@@ -23,18 +23,18 @@ Node.js is required in order to run this project.
 
 In order to get this project up and running follow the commands below.
 
-```$ npm i`
+```
+$ npm i
+```
 
 This will install the dependencies required to make the app function.
 
-```$ npm start`
+```
+$ npm start
+```
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-```
-
-```
