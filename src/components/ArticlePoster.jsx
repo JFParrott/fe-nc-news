@@ -53,6 +53,10 @@ const ArticleSubmit = styled.button`
   width: 100px;
   margin: 5px;
   border-radius: 3px;
+  border: 1px solid black;
+  &:hover {
+    background-color: #c2babd;
+  }
   color: #e85a4f;
   background-color: #e8e1e4;
 `;

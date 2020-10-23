@@ -9,6 +9,7 @@ const PageButton = styled.button`
   height: 25px;
   width: 25px;
   border-radius: 3px;
+  border: 1px solid black;
 `;
 
 const Pagination = (props) => {

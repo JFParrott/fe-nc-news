@@ -36,6 +36,10 @@ const PostButton = styled.button`
   color: #123c69;
   border-radius: 3px;
   background-color: white;
+  border: 1px solid black;
+  &:hover {
+    background-color: #c2babd;
+  }
   @media screen and (max-height: 600px) {
     height: 15px;
     font-size: 12px;

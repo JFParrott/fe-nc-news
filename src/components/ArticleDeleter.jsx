@@ -8,6 +8,10 @@ const ArticleDelete = styled.button`
   border-radius: 3px;
   color: #e85a4f;
   background-color: #e8e1e4;
+  border: 1px solid black;
+  &:hover {
+    background-color: #c2babd;
+  }
   @media screen and (max-height: 650px) {
     height: 20px;
   }
